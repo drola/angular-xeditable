@@ -246,7 +246,7 @@ angular.module('xeditable').directive('editableCombodate', ['editableDirectiveFa
           value: new Date(this.scope.$data)
         };
         var self = this;
-        angular.forEach(["format", "template", "minYear", "maxYear", "yearDescending", "minuteStep", "secondStep", "firstItem", "errorClass", "customClass", "roundTime", "smartDays"], function(name) {
+        angular.forEach(["format", "template", "minYear", "maxYear", "yearDescending", "noYearValue", "noYearText", "minuteStep", "secondStep", "firstItem", "errorClass", "customClass", "roundTime", "smartDays"], function(name) {
 
           var attrName = "e" + name.charAt(0).toUpperCase() + name.slice(1);
           if (attrName in self.attrs) {
