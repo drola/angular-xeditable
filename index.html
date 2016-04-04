@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Angular-xeditable :: Edit in place for AngularJS</title>
     <!--theme: Bootstrap 3, Bootstrap 2, default-->
-    <link href="libs/bootstrap/3.0.0/css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="libs/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet" media="screen">
     <!--xeditable css-->
     <link href="dist/css/xeditable.css" rel="stylesheet" media="screen">
     <!--docs css-->
     <link href="docs/css/docs.css" rel="stylesheet" media="screen">
     <!--angular-->
-    <script src="libs/angular/1.2.7/angular.js"></script>
-    <script src="libs/angular/1.2.7/angular-mocks.js"></script>
+    <script src="libs/angular/1.5.0/angular.js"></script>
+    <script src="libs/angular/1.5.0/angular-mocks.js"></script>
     <!--jquery (needed for bootstrap)-->
     <script src="libs/jquery/jquery-1.10.2.min.js"></script>
     <!--bootstrap-->
-    <script src="libs/bootstrap/3.0.0/js/bootstrap.js"></script>
+    <script src="libs/bootstrap/3.3.6/js/bootstrap.js"></script>
     <!--angular-ui-bootstrap-->
-    <script src="libs/angular-ui/bootstrap/ui-bootstrap-tpls-0.6.0.min.js"></script>
+    <script src="libs/angular-ui/bootstrap/ui-bootstrap-tpls-1.2.4.min.js"></script>
     <!--moment-->
     <script src="libs/moment.min.2.5.0.js"></script>
     <!--google-code-prettify-->
@@ -39,7 +39,7 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
-            <li><a href="https://github.com/vitalets/angular-xeditable">Github</a></li>
+            <li><a href="https://github.com/vitalets/angular-xeditable">GitHub</a></li>
           </ul>
           <form class="navbar-form navbar-right"><a href="zip/angular-xeditable-0.1.11.zip" style="font-weight:bold" class="btn btn-primary"><span style="margin-right:10px" class="glyphicon glyphicon-save"></span>Download 0.1.11 ~ kb</a></form>
           <div style="padding-top: 13px">
@@ -199,9 +199,9 @@ to use power of angular and support complex forms / editable grids.</p>
           <ol>
             <li> <p>Include <a href="http://angularjs.org">Angular.js</a> in your project</p>
 
-              <pre class="prettyprint">&lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js&quot;&gt;&lt;/script&gt;</pre><p>Optionally include <a href="http://getbootstrap.com">Bootstrap</a> CSS for theming</p>
+              <pre class="prettyprint">&lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js&quot;&gt;&lt;/script&gt;</pre><p>Optionally include <a href="http://getbootstrap.com">Bootstrap</a> CSS for theming</p>
 
-              <pre class="prettyprint">&lt;link href=&quot;//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;</pre>
+              <pre class="prettyprint">&lt;link href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;</pre>
             </li>
             <li> <span>Install angular-xeditable via </span><a href="http://bower.io" target="_blank">bower</a><span> or  </span><a href="zip/angular-xeditable-0.1.11.zip">download latest zip    </a>
               <pre class="prettyprint">bower install angular-xeditable </pre>
@@ -396,11 +396,11 @@ $scope.$watch("user", function(v) { $scope.$parent.debug["select-remote"]=v; });
   <div>Url: <a href="#" editable-url="user.url">{{ user.url || 'empty' }}</a></div>  
   <div>Search: <a href="#" editable-search="user.search">{{ user.search || 'empty' }}</a></div>  
   <div>Color: <a href="#" editable-color="user.color">{{ user.color || 'empty' }}</a></div>  
-  <div>Date: <a href="#" editable-date="user.date">{{ user.date || 'empty' }}</a></div>  
-  <div>Time: <a href="#" editable-time="user.time">{{ user.time || 'empty' }}</a></div>  
+  <div>Date: <a href="#" editable-date="user.date">{{ (user.date | date: "yyyy-MM-dd") || 'empty' }}</a></div>
+  <div>Time: <a href="#" editable-time="user.time">{{ (user.time | date: "HH:mm") || 'empty' }}</a></div>
   <div>Datetime: <a href="#" editable-datetime="user.datetime">{{ user.datetime || 'empty' }}</a></div>  
-  <div>Month: <a href="#" editable-month="user.month">{{ user.month || 'empty' }}</a></div>  
-  <div>Week: <a href="#" editable-week="user.week">{{ user.week || 'empty' }}</a></div>
+  <div>Month: <a href="#" editable-month="user.month">{{ (user.month | date: "yyyy-MM") || 'empty' }}</a></div>
+  <div>Week: <a href="#" editable-week="user.week">{{ (user.week | date: "yyyy-Www") || 'empty'}}</a></div>
   <div>Password: <a href="#" editable-password="user.password">{{ user.password || 'empty' }}</a></div>
 </div></div>
                       <pre>{{ debug["html5-inputs"] | json }}</pre>
@@ -433,7 +433,7 @@ $scope.$watch("user", function(v) { $scope.$parent.debug["select-remote"]=v; });
     search: 'blabla',
     color: '#6a4415',
     date: null,
-    time: '12:30',
+    time: new Date(1970, 0, 1, 12, 30),
     datetime: null,
     month: null,
     week: null,
@@ -449,11 +449,11 @@ $scope.$watch("user", function(v) { $scope.$parent.debug["html5-inputs"]=v; }); 
   &lt;div&gt;Url: &lt;a href=&quot;#&quot; editable-url=&quot;user.url&quot;&gt;{{ user.url || 'empty' }}&lt;/a&gt;&lt;/div&gt;  
   &lt;div&gt;Search: &lt;a href=&quot;#&quot; editable-search=&quot;user.search&quot;&gt;{{ user.search || 'empty' }}&lt;/a&gt;&lt;/div&gt;  
   &lt;div&gt;Color: &lt;a href=&quot;#&quot; editable-color=&quot;user.color&quot;&gt;{{ user.color || 'empty' }}&lt;/a&gt;&lt;/div&gt;  
-  &lt;div&gt;Date: &lt;a href=&quot;#&quot; editable-date=&quot;user.date&quot;&gt;{{ user.date || 'empty' }}&lt;/a&gt;&lt;/div&gt;  
-  &lt;div&gt;Time: &lt;a href=&quot;#&quot; editable-time=&quot;user.time&quot;&gt;{{ user.time || 'empty' }}&lt;/a&gt;&lt;/div&gt;  
+  &lt;div&gt;Date: &lt;a href=&quot;#&quot; editable-date=&quot;user.date&quot;&gt;{{ (user.date | date: &quot;yyyy-MM-dd&quot;) || 'empty' }}&lt;/a&gt;&lt;/div&gt;
+  &lt;div&gt;Time: &lt;a href=&quot;#&quot; editable-time=&quot;user.time&quot;&gt;{{ (user.time | date: &quot;HH:mm&quot;) || 'empty' }}&lt;/a&gt;&lt;/div&gt;
   &lt;div&gt;Datetime: &lt;a href=&quot;#&quot; editable-datetime=&quot;user.datetime&quot;&gt;{{ user.datetime || 'empty' }}&lt;/a&gt;&lt;/div&gt;  
-  &lt;div&gt;Month: &lt;a href=&quot;#&quot; editable-month=&quot;user.month&quot;&gt;{{ user.month || 'empty' }}&lt;/a&gt;&lt;/div&gt;  
-  &lt;div&gt;Week: &lt;a href=&quot;#&quot; editable-week=&quot;user.week&quot;&gt;{{ user.week || 'empty' }}&lt;/a&gt;&lt;/div&gt;
+  &lt;div&gt;Month: &lt;a href=&quot;#&quot; editable-month=&quot;user.month&quot;&gt;{{ (user.month | date: &quot;yyyy-MM&quot;) || 'empty' }}&lt;/a&gt;&lt;/div&gt;
+  &lt;div&gt;Week: &lt;a href=&quot;#&quot; editable-week=&quot;user.week&quot;&gt;{{ (user.week | date: &quot;yyyy-Www&quot;) || 'empty'}}&lt;/a&gt;&lt;/div&gt;
   &lt;div&gt;Password: &lt;a href=&quot;#&quot; editable-password=&quot;user.password&quot;&gt;{{ user.password || 'empty' }}&lt;/a&gt;&lt;/div&gt;
 &lt;/div&gt;</pre>
                       <h3>controller.js</h3>
@@ -467,7 +467,7 @@ $scope.$watch("user", function(v) { $scope.$parent.debug["html5-inputs"]=v; }); 
     search: 'blabla',
     color: '#6a4415',
     date: null,
-    time: '12:30',
+    time: new Date(1970, 0, 1, 12, 30),
     datetime: null,
     month: null,
     week: null,
@@ -678,7 +678,7 @@ $scope.$watch("user", function(v) { $scope.$parent.debug["radiolist"]=v; }); });
 </div></div>
                       <pre>{{ debug["bsdate"] | json }}</pre>
                       <p><p>Date control is implemented via <a href="http://angular-ui.github.io/bootstrap/#/datepicker">Angular-ui bootstrap datepicker</a>.<br>You should include additional <code>ui-bootstrap-tpls.min.js</code>:</p>
-<pre class="prettyprint">&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.6.0/ui-bootstrap-tpls.min.js&quot;&gt;&lt;/script&gt;</pre>
+<pre class="prettyprint">&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.2.4/ui-bootstrap-tpls.min.js&quot;&gt;&lt;/script&gt;</pre>
 <p>Add <code>ui.bootstrap</code> as module dependency:</p>
 <pre class="prettyprint">var app = angular.module(&quot;app&quot;, [&quot;xeditable&quot;, &quot;ui.bootstrap&quot;]);</pre>
 <p>And set <code>editable-bsdate</code> attribute in editable element.
@@ -732,7 +732,7 @@ $scope.$watch("user", function(v) { $scope.$parent.debug["bsdate"]=v; }); });</s
 </div></div>
                       <pre>{{ debug["bstime"] | json }}</pre>
                       <p><p>Time control is implemented via <a href="http://angular-ui.github.io/bootstrap/#/timepicker">Angular-ui bootstrap timepicker</a>.<br><strong>Currently it has only Bootstrap 2 version</strong>, Bootstrap 3 version is <a href="https://github.com/angular-ui/bootstrap/issues?milestone=6">in progress</a>.<br>You should include additional <code>ui-bootstrap-tpls.min.js</code>:</p>
-<pre class="prettyprint">&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.6.0/ui-bootstrap-tpls.min.js&quot;&gt;&lt;/script&gt;</pre>
+<pre class="prettyprint">&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.2.4/ui-bootstrap-tpls.min.js&quot;&gt;&lt;/script&gt;</pre>
 <p>Add <code>ui.bootstrap</code> as module dependency:</p>
 <pre class="prettyprint">var app = angular.module(&quot;app&quot;, [&quot;xeditable&quot;, &quot;ui.bootstrap&quot;]);</pre>
 <p>And set <code>editable-bstime</code> attribute in editable element.
@@ -814,16 +814,16 @@ $scope.$watch("user", function(v) { $scope.$parent.debug["combodate"]=v; }); });
                       <!-- watch change of user to update rootScope for debugging-->
                       <h3>demo</h3><a href="http://jsfiddle.net/NfPcH/46/" target="_blank" class="btn btn-info fiddle pull-right">View Bootstrap 2 jsFiddle</a>
                       <div class="well line-example"><div ng-controller="TypeaheadCtrl">
-  <a href="#" editable-text="user.state" e-typeahead="state for state in states | filter:$viewValue | limitTo:8">
+  <a href="#" editable-text="user.state" e-uib-typeahead="state for state in states | filter:$viewValue | limitTo:8">
     {{ user.state || 'empty' }}
   </a>
 </div></div>
                       <pre>{{ debug["typeahead"] | json }}</pre>
                       <p><p>Typeahead control is implemented via <a href="http://angular-ui.github.io/bootstrap/#/typeahead">Angular-ui bootstrap typeahead</a>.<br>Basically it is normal <code>editable-text</code> control with additional <code>e-typeahead</code> attributes.<br>You should include additional <code>ui-bootstrap-tpls.min.js</code>:</p>
-<pre class="prettyprint">&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.6.0/ui-bootstrap-tpls.min.js&quot;&gt;&lt;/script&gt;</pre>
+<pre class="prettyprint">&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.2.4/ui-bootstrap-tpls.min.js&quot;&gt;&lt;/script&gt;</pre>
 <p>Then add <code>ui.bootstrap</code> as module dependency:</p>
 <pre class="prettyprint">var app = angular.module(&quot;app&quot;, [&quot;xeditable&quot;, &quot;ui.bootstrap&quot;]);</pre>
-<p>And finally set <code>editable-text</code> attribute pointing to model and <code>e-typeahead</code> attribute pointing to typeahead items.
+<p>And finally set <code>editable-text</code> attribute pointing to model and <code>e-uib-typeahead</code> attribute pointing to typeahead items.
 Other parameters can be defined via <code>e-typeahead-*</code> syntax, e.g. <code>e-typeahead-wait-ms=&quot;100&quot;</code>.</p>
 </p>
                       <!--script(src=dir+'/controller.js')-->
@@ -836,7 +836,7 @@ Other parameters can be defined via <code>e-typeahead-*</code> syntax, e.g. <cod
 $scope.$watch("user", function(v) { $scope.$parent.debug["typeahead"]=v; }); });</script>
                       <h3>html</h3>
                       <pre class="prettyprint ng-non-bindable">&lt;div ng-controller=&quot;TypeaheadCtrl&quot;&gt;
-  &lt;a href=&quot;#&quot; editable-text=&quot;user.state&quot; e-typeahead=&quot;state for state in states | filter:$viewValue | limitTo:8&quot;&gt;
+  &lt;a href=&quot;#&quot; editable-text=&quot;user.state&quot; e-uib-typeahead=&quot;state for state in states | filter:$viewValue | limitTo:8&quot;&gt;
     {{ user.state || 'empty' }}
   &lt;/a&gt;
 &lt;/div&gt;</pre>
@@ -2318,7 +2318,7 @@ Note that using <code>oncancel</code> hook allows you to revert all changes and 
           <section id="bootstrap3"></section>
           <h2>Bootstrap 3</h2><p>Include <a href="http://getbootstrap.com">Bootstrap 3</a> CSS</p>
 
-          <pre class="prettyprint">&lt;link href=&quot;//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;</pre><p>Set theme in <code>app.run</code>:</p>
+          <pre class="prettyprint">&lt;link href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;</pre><p>Set theme in <code>app.run</code>:</p>
 
           <pre class="prettyprint">app.run(function(editableOptions) {
   editableOptions.theme = 'bs3';
