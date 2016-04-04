@@ -192,6 +192,8 @@ angular.module('xeditable').factory('editableCombodate', [function() {
       minYear: 1970,
       maxYear: 2015,
       yearDescending: true,
+      noYearValue: null,
+      noYearText: null,
       minuteStep: 5,
       secondStep: 1,
       firstItem: 'empty', //'name', 'empty', 'none'
@@ -313,7 +315,9 @@ angular.module('xeditable').factory('editableCombodate', [function() {
      fillCommon: function(key) {
       var values = [], relTime;
 
-      if(this.options.firstItem === 'name') {
+      if(key == 'y' && this.options.noYearText && this.options.noYearValue) {
+                values.push([this.options.noYearValue, this.options.noYearText]);
+      } else if(this.options.firstItem === 'name') {
         //need both to support moment ver < 2 and  >= 2
         relTime = moment.relativeTime || moment.langData()._relativeTime; 
         var header = typeof relTime[key] === 'function' ? relTime[key](1, true, key, false) : relTime[key];
