@@ -21,7 +21,7 @@ angular.module('xeditable').directive('editableCombodate', ['editableDirectiveFa
 
         var combodate = editableCombodate.getInstance(this.inputEl, options);
         combodate.$widget.find('select').bind('change', function(e) {
-          self.scope.$data = (new Date(combodate.getValue())).toISOString();
+          self.scope.$data = (new Date(combodate.getValue()));
         });
       }
     });
