@@ -2381,59 +2381,6 @@ a.editable-click:hover {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td><code>blur</code></td>
-                          <td>string</td>
-                          <td><p>Action when control losses focus. Values: <code>cancel|submit|ignore</code>.
-Has sense only for single editable element.
-Otherwise, if control is part of form - you should set <code>blur</code> of form, not of individual element.</p>
-</td>
-                        </tr>
-                        <tr>
-                          <td><code>buttons</code></td>
-                          <td>string</td>
-                          <td><p>Whether to show ok/cancel buttons. Values: <code>right|no</code>.
-If set to <code>no</code> control automatically submitted when value changed.<br>If control is part of form buttons will never be shown.</p>
-</td>
-                        </tr>
-                        <tr>
-                          <td><code>e-*</code></td>
-                          <td>any</td>
-                          <td><p>Attributes defined with <code>e-*</code> prefix automatically transfered from original element to
-control.<br>For example, if you set <code>&lt;span editable-text=&quot;user.name&quot; e-style=&quot;width: 100px&quot;</code>&gt;
-then input will appear as <code>&lt;input style=&quot;width: 100px&quot;&gt;</code>.<br>See <a href="#text-customize">demo</a>.</p>
-</td>
-                        </tr>
-                        <tr>
-                          <td><code>onaftersave</code></td>
-                          <td>method</td>
-                          <td><p>Called during submit after value is saved to model.<br>See <a href="#onaftersave">demo</a>.</p>
-</td>
-                        </tr>
-                        <tr>
-                          <td><code>onbeforesave</code></td>
-                          <td>method</td>
-                          <td><p>Called during submit before value is saved to model.<br>See <a href="#onbeforesave">demo</a>.</p>
-</td>
-                        </tr>
-                        <tr>
-                          <td><code>oncancel</code></td>
-                          <td>method</td>
-                          <td><p>Called when control is cancelled.</p>
-</td>
-                        </tr>
-                        <tr>
-                          <td><code>onhide</code></td>
-                          <td>method</td>
-                          <td><p>Called when control is hidden after both save or cancel.</p>
-</td>
-                        </tr>
-                        <tr>
-                          <td><code>onshow</code></td>
-                          <td>method</td>
-                          <td><p>Called when control is shown.<br>See <a href="#select-remote">demo</a>.</p>
-</td>
-                        </tr>
                       </tbody>
                     </table>
           <section id="ref-form"></section>
@@ -2453,50 +2400,6 @@ then input will appear as <code>&lt;input style=&quot;width: 100px&quot;&gt;</co
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td><code>blur</code></td>
-                          <td>string</td>
-                          <td><p>Action when form losses focus. Values: <code>cancel|submit|ignore</code>.
-Default is <code>ignore</code>.</p>
-</td>
-                        </tr>
-                        <tr>
-                          <td><code>onaftersave</code></td>
-                          <td>method</td>
-                          <td><p>Called when form values are saved to model.<br>See <a href="#editable-form">editable-form demo</a> for details.</p>
-</td>
-                        </tr>
-                        <tr>
-                          <td><code>onbeforesave</code></td>
-                          <td>method</td>
-                          <td><p>Called after all children <code>onbeforesave</code> callbacks but before saving form values
-to model.<br>If at least one children callback returns <code>non-string</code> - it will not not be called.<br>See <a href="#editable-form">editable-form demo</a> for details.</p>
-</td>
-                        </tr>
-                        <tr>
-                          <td><code>oncancel</code></td>
-                          <td>method</td>
-                          <td><p>Called when form is cancelled.</p>
-</td>
-                        </tr>
-                        <tr>
-                          <td><code>onhide</code></td>
-                          <td>method</td>
-                          <td><p>Called when form hides after both save or cancel.</p>
-</td>
-                        </tr>
-                        <tr>
-                          <td><code>onshow</code></td>
-                          <td>method</td>
-                          <td><p>Called when form is shown.</p>
-</td>
-                        </tr>
-                        <tr>
-                          <td><code>shown</code></td>
-                          <td>bool</td>
-                          <td><p>Whether form initially rendered in shown state.</p>
-</td>
-                        </tr>
                       </tbody>
                     </table>
           <h3>Properties</h3><p>Properties are available when you set <code>name</code> attribute of form: </p>
@@ -2513,18 +2416,6 @@ to model.<br>If at least one children callback returns <code>non-string</code> -
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td><code>$visible</code></td>
-                          <td>bool</td>
-                          <td><p>Form visibility flag.</p>
-</td>
-                        </tr>
-                        <tr>
-                          <td><code>$waiting</code></td>
-                          <td>bool</td>
-                          <td><p>Form waiting flag. It becomes <code>true</code> when form is loading or saving data.</p>
-</td>
-                        </tr>
                       </tbody>
                     </table>
           <h3>Methods</h3><p>Methods are available when you set <code>name</code> attribute of form:</p>
@@ -2541,41 +2432,6 @@ to model.<br>If at least one children callback returns <code>non-string</code> -
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td><code>$activate(name)</code></td>
-                          <td><strong>name</strong><i> (string) </i>name of field<br>
-                          </td>
-                          <td><p>Sets focus on form field specified by <code>name</code>.</p>
-</td>
-                        </tr>
-                        <tr>
-                          <td><code>$cancel()</code></td>
-                          <td><i>none    </i>
-                          </td>
-                          <td><p>Triggers <code>oncancel</code> event and calls <code>$hide()</code>.</p>
-</td>
-                        </tr>
-                        <tr>
-                          <td><code>$hide()</code></td>
-                          <td><i>none    </i>
-                          </td>
-                          <td><p>Hides form with editable controls without saving.</p>
-</td>
-                        </tr>
-                        <tr>
-                          <td><code>$setError(name, msg)</code></td>
-                          <td><strong>name</strong><i> (string) </i>name of field<br><strong>msg</strong><i> (string) </i>error message<br>
-                          </td>
-                          <td><p>Shows error message for particular field.</p>
-</td>
-                        </tr>
-                        <tr>
-                          <td><code>$show()</code></td>
-                          <td><i>none    </i>
-                          </td>
-                          <td><p>Shows form with editable controls.</p>
-</td>
-                        </tr>
                       </tbody>
                     </table>
         </div>
