@@ -477,8 +477,8 @@ angular.module('xeditable').factory('editableCombodate', [function() {
 
         values[k] = that['$'+k] ? parseInt(that['$'+k].val(), 10) : def;
 
-        if(k==='year' && isNaN(parseInt(that['$'+k].val(), 10)) && this.options.noYearValue) {
-          values[k] = this.options.noYearValue;
+        if(k==='year' && isNaN(parseInt(that['$'+k].val(), 10)) && that.options.noYearValue) {
+          values[k] = that.options.noYearValue;
         }
         
         if(isNaN(values[k])) {
